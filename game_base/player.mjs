@@ -13,7 +13,8 @@ export class Player extends Entity
     constructor(x, y, location, sprite_id)
     {
         super(x, y, location, sprite_id);
-        this.speed = 2;
+        this.acceleration = 0.1;
+        this.max_speed = 3;
     }
     move(x_direction, y_direction)
     {
@@ -60,11 +61,14 @@ export class Player extends Entity
                 break;
         }
         this.x_speed += x_diff;
-        if (this.x_speed >= this.max_speed)
-        {this.x_speed = this.max_speed;}
         this.y_speed += y_diff;
-        if (this.y_speed >= this.max_speed)
-        {this.y_speed = this.max_speed;}
+        if (Math.abs(this.x_speed) + Math.abs(this.y_speed) > this.max_speed)
+        {
+            if (Math.abs(this.x_speed) > this.max_speed / 2)
+            this.x_speed -= this.acceleration * Math.sign(this.x_speed) * 2
+            if (Math.abs(this.y_speed) > this.max_speed / 2)
+            this.y_speed -= this.acceleration * Math.sign(this.y_speed) * 2
+        }
         this.x += this.x_speed;
         this.y += this.y_speed;
         this.relocate();
