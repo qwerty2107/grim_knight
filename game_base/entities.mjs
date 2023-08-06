@@ -37,6 +37,7 @@ export class Entity
     {
         io.emit("relocate", this.id, this.x, this.y, this.rotation);
     }
+    
     act()
     {
         //Activated by timer

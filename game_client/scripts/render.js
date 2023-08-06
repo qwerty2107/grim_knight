@@ -83,7 +83,6 @@ socket.on("relocate", (id, x, y, rotation) =>
     moving_entity.x = x;
     moving_entity.y = y;
     moving_entity.rotation = rotation;
-    moving_entity.draw();
 });
 
 
