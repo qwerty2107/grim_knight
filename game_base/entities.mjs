@@ -21,6 +21,8 @@ export class Entity
         this.y_speed = 0;
         this.max_speed = 2;
 
+        // this.looking_right = true;
+
         this.x_direction = null;
         this.y_direction = null;
 
@@ -41,6 +43,8 @@ export class Entity
     }
     relocate()
     {
+        // if (this.x_speed >= 0) {this.looking_right = true;}
+        // else {this.looking_right = false;}
         io.emit("relocate", this.id, this.x, this.y, this.rotation);
     }
 

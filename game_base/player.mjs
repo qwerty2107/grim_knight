@@ -83,6 +83,8 @@ export class Player extends Entity
     }
     relocate()
     {
+        // if (this.x_speed >= 0) {this.looking_right = true;}
+        // else {this.looking_right = false;}
         io.emit("player_relocate", this.x, this.y, this.rotation);
     }
 }

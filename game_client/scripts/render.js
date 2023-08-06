@@ -25,6 +25,29 @@ async function loadImages(imageUrlArray)
     return image_array;
 }
 
+// async function flip_images(image_array)
+// {
+//     const promise_array = []; // create an array for promises
+//     const flipped_array = []; // array for the images
+
+//     for (let image of image_array) {
+
+//         promise_array.push(new Promise(resolve => {
+
+//             const img = new Image();
+//             img.onload = resolve;
+//             img.src = image_url;
+//             image_array.push(img);
+//         }));
+//     }
+
+//     await Promise.all(promise_array); // wait for all the images to be loaded
+//     console.log("all images loaded");
+//     return image_array;
+// }
+
+
+
 const canvas = document.getElementById("map_canvas");
 const ctx = canvas.getContext("2d");
 const images = await loadImages(image_urls);
