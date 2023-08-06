@@ -3,7 +3,7 @@ import { Player } from "./player.mjs";
 import { io } from "../server.mjs";
 
 let graveyard = new Location(1000, 1000, 1);
-export let player = new Player(0, 0, graveyard, 0);
+export let player = new Player(500, 500, graveyard, 0);
 
 
 function start()

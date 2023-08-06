@@ -14,7 +14,13 @@ export class Entity
         this.location = location;
         this.sprite_id = sprite_id;
 
-        this.speed = 2;
+        //this.x_acceleration = 0;
+        //this.y_acceleration = 0;
+        this.acceleration = 0.05;
+        this.x_speed = 0;
+        this.y_speed = 0;
+        this.max_speed = 2;
+
         this.x_direction = null;
         this.y_direction = null;
 

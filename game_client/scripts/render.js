@@ -41,11 +41,10 @@ class Map_sprite
     draw()
     {
         //console.log("drawing map");
-        ctx.drawImage(this.sprite, 0, 0, 1000, 1000);
+        ctx.drawImage(this.sprite, 500 - player.x, 500 - player.y, 1000, 1000);
     }
 }
 
-let map_sprite = Map_sprite[0]; //Placeholder image
 const entity_sprites = new Map();
 class Entity_sprite
 {
@@ -59,22 +58,45 @@ class Entity_sprite
         this.sprite = images[sprite_id];
         entity_sprites.set(id, this);
         // this.sprite.src = "./images/knight.jpg";
-        this.draw();
     }
     draw()
     {
         //console.log("drawing entity");
         // ctx.save();
         // ctx.rotate(this.rotation);
-        ctx.drawImage(this.sprite, this.x, this.y, 100, 100);
+        ctx.drawImage(this.sprite, this.x - player.x, this.y - player.y, 100, 100);
         // ctx.restore();
     }
 }
+
+class Player
+{
+    constructor(sprite_id, x, y, rotation)
+    {
+        this.x = x;
+        this.y = y;
+        this.rotation = rotation;
+        this.sprite = images[sprite_id];
+    }
+    draw()
+    {
+        ctx.drawImage(this.sprite, 500, 500, 100, 100);
+    }
+}
+
+let map_sprite = Map_sprite[0]; //Placeholder image
+let player = new Player(0, 0, 0, 0); //Placeholder
 
 socket.on("spawn", (id, sprite_id, x, y, rotation) =>
 {
     //console.log("something spawned");
     new Entity_sprite(id, sprite_id, x, y, rotation);
+});
+
+socket.on("spawn_player", (sprite_id, x, y, rotation) =>
+{
+    //console.log("something spawned");
+    player = new Player(sprite_id, x, y, rotation);
 });
 
 socket.on("relocate", (id, x, y, rotation) =>
@@ -83,6 +105,13 @@ socket.on("relocate", (id, x, y, rotation) =>
     moving_entity.x = x;
     moving_entity.y = y;
     moving_entity.rotation = rotation;
+});
+
+socket.on("player_relocate", (x, y, rotation) =>
+{
+    player.x = x;
+    player.y = y;
+    player.rotation = rotation;
 });
 
 
@@ -106,13 +135,19 @@ socket.on("add_map", (sprite_id) =>
 
 const timer = setInterval(() =>
 {
+    draw_all();
+}, 20);
+
+
+function draw_all()
+{
     map_sprite.draw();
     for (let sprite of entity_sprites.values())
     {
         sprite.draw();
     }
-}, 20);
-
+    player.draw();
+}
 
 
 // function spawn_entity(x, y, sprite_id)
