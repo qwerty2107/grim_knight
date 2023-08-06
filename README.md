@@ -1,4 +1,7 @@
 # grim_knight
+
+скачать:
+CODE -> download zip
  
 КАК запустить:
 
