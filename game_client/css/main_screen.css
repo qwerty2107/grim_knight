@@ -1,0 +1,17 @@
+
+
+
+#map
+{
+    height: 1000px;
+    width: 1000px;
+    border: 2px;
+    border-color: black;
+    background-color: rgb(100, 100, 100);
+}
+
+/* #map_canvas
+{
+    height: 1000px;
+    width: 1000px;
+} */
