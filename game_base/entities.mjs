@@ -14,7 +14,7 @@ export class Entity
         this.location = location;
         this.sprite_id = sprite_id;
 
-        this.speed = 3;
+        this.speed = 2;
         this.x_direction = null;
         this.y_direction = null;
 
@@ -37,7 +37,7 @@ export class Entity
     {
         io.emit("relocate", this.id, this.x, this.y, this.rotation);
     }
-    
+
     act()
     {
         //Activated by timer

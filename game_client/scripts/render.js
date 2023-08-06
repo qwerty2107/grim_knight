@@ -94,15 +94,24 @@ socket.on("add_map", (sprite_id) =>
     console.log(entity_sprites.length);
 });
 
-socket.on("tick", () =>
+// socket.on("tick", () =>
+// {
+//     //console.log("tick");
+//     map_sprite.draw();
+//     for (let sprite of entity_sprites.values())
+//     {
+//         sprite.draw();
+//     }
+// })
+
+const timer = setInterval(() =>
 {
-    //console.log("tick");
     map_sprite.draw();
     for (let sprite of entity_sprites.values())
     {
         sprite.draw();
     }
-})
+}, 20);
 
 
 
